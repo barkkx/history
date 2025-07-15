@@ -4,10 +4,11 @@ from gtts import gTTS
 
 
 def get_pdf_text(pdf_file):
-    with pdfplumber.PDF(open(pdf_file, mode='rb')) as f:
-        pages = f.pages
+    with pdfplumber.PDF(open(pdf_file, mode='rb')) as file:
+        pages = file.pages
         pdf_text = ''.join(page.extract_text() for page in pages)
-    return pdf_text.replace("\n", ' ')
+        pdf_text.replace("\n", ' ')
+    return pdf_text
 
 
 def get_media_file(pdf_text):
